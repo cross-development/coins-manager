@@ -1,12 +1,17 @@
-//Core
-import React from 'react'
+//Components
+import { SignUp } from 'components/Auth';
+import { Container } from 'components/Shared';
 
 const SignUpPage = () => {
-    return (
-        <div>
-            SignUpPage
-        </div>
-    )
-}
+	const handleSubmit = credentials => console.log('Submitted: ', { ...credentials });
 
-export default SignUpPage
+	return (
+		<section>
+			<Container>
+				<SignUp onSubmit={handleSubmit} />
+			</Container>
+		</section>
+	);
+};
+
+export default SignUpPage;
