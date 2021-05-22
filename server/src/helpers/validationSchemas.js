@@ -1,3 +1,7 @@
+//Core Mongoose
+const {
+	Types: { ObjectId },
+} = require('mongoose');
 //Packages
 const Joi = require('joi');
 //Configs
@@ -19,7 +23,29 @@ const signInSchema = Joi.object({
 	password: Joi.string().min(userPassMin).max(userPassMax).required(),
 });
 
+/**
+ * =============== Coin schemas =====================================
+ */
+const coinIdSchema = Joi.object({
+	coinId: Joi.string()
+		.custom((value, helpers) =>
+			!ObjectId.isValid(value) ? helpers.message({ message: 'Invalid coinId' }) : value,
+		)
+		.required(),
+});
+
+const addCoinSchema = Joi.object({});
+
+const removeCoinSchema = Joi.object({});
+
+const updateCoinSchema = Joi.object({});
+
 module.exports = {
 	signUpSchema,
 	signInSchema,
+
+	coinIdSchema,
+	addCoinSchema,
+	removeCoinSchema,
+	updateCoinSchema,
 };
