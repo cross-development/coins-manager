@@ -1,7 +1,10 @@
 //Core
 import axios from 'axios';
 
-const token = {
+//Axios defaults config
+axios.defaults.baseURL = `http://localhost:8080`;
+
+export const accessToken = {
 	set(token) {
 		axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 	},
@@ -10,5 +13,3 @@ const token = {
 		axios.defaults.headers.common.Authorization = '';
 	},
 };
-
-export default token;
