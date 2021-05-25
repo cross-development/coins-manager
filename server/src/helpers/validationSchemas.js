@@ -40,6 +40,17 @@ const removeCoinSchema = Joi.object({});
 
 const updateCoinSchema = Joi.object({});
 
+/**
+ * =============== Emperor schemas =====================================
+ */
+const emperorIdSchema = Joi.object({
+	emperorId: Joi.string()
+		.custom((value, helpers) =>
+			!ObjectId.isValid(value) ? helpers.message({ message: 'Invalid emperorId' }) : value,
+		)
+		.required(),
+});
+
 module.exports = {
 	signUpSchema,
 	signInSchema,
@@ -48,4 +59,6 @@ module.exports = {
 	addCoinSchema,
 	removeCoinSchema,
 	updateCoinSchema,
+
+	emperorIdSchema,
 };

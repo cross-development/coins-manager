@@ -9,6 +9,7 @@ require('dotenv').config();
 const authRouter = require('../api/auth/auth.router');
 const userRouter = require('../api/user/user.router');
 const coinRouter = require('../api/coin/coin.router');
+const emperorRouter = require('../api/emperor/emperor.router');
 
 async function start() {
 	const app = initServer();
@@ -34,6 +35,7 @@ function initRouter(app) {
 	app.use('/api/auth', authRouter);
 	app.use('/api/users', userRouter);
 	app.use('/api/coins', coinRouter);
+	app.use('/api/emperors', emperorRouter);
 }
 
 async function initDatabase() {
